@@ -1,0 +1,25 @@
+<odoo>
+
+    <menuitem name="Emsi" id="root_menu" sequence="0" web_icon="projet_emsi,static/src/img/icon.png"/>
+    <menuitem name="Universite" id="root_menu_1"  parent="root_menu" sequence="0" />
+    <menuitem name="Universite" id="root_menu_11" action="action_university_universite" parent="root_menu_1" sequence="0" />
+    <menuitem name="Listes des departements" id="root_menu_3" action="action_university_departement" parent="root_menu_1" sequence="1" />
+    <menuitem name="Enseignant" id="root_menu_4" action="action_university_enseignant" parent="root_menu" sequence="1" />
+    <menuitem name="Filiere" id="root_menu_5" parent="root_menu" sequence="1" />
+    <menuitem name="Groupes" id="root_menu_22" action="action_university_groupe" parent="root_menu_5" sequence="1" />
+    <menuitem name="Liste des filieres" id="root_menu_55" action="action_university_filiere" parent="root_menu_5" sequence="1" />
+     <menuitem name="Module" id="root_menu_6" action="action_university_module" parent="root_menu_5" sequence="1" />
+    <menuitem name="Matiere" id="root_menu_7" action="action_university_matiere" parent="root_menu_5" sequence="1" />
+    <menuitem name="Salle" id="root_menu_8" action="action_university_salle" parent="root_menu" sequence="1" />
+    <menuitem name="Seance" id="root_menu_10" action="action_university_seance" parent="root_menu_5" sequence="1" />
+    <menuitem name="Etudiant" id="root_menu_12" parent="root_menu" sequence="1" />
+    <menuitem name="Epreuve" id="root_menu_9" action="action_university_epreuve" parent="root_menu_12" sequence="1" />
+     <menuitem name="Absence" id="root_menu_14" action="action_university_absence" parent="root_menu_12" sequence="6"/>res_model'
+    <menuitem name="Listedesétudiants" id="root_menu_15" action="action_university_etudiant" parent="root_menu_12" sequence="6" />
+
+
+
+    <!--  <menuitem name="Search view tutorial" id="root_menu_7" parent="root_menu_3" action="action_university_student" sequence="98" /> -->
+
+
+</odoo>

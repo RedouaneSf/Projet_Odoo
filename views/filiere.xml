@@ -1,0 +1,75 @@
+<odoo>
+
+    <record id="university_filiere_form" model="ir.ui.view">
+        <field name="name">university.filiere.form</field>
+        <field name="model">university.filiere</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+
+                        <field name="code" invisible="1"/>
+                        <field name="intitule"/>
+                        <field name="departement_id"/>
+
+
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="university_filiere_tree" model="ir.ui.view">
+        <field name="name">university.filiere.tree</field>
+        <field name="model">university.filiere</field>
+        <field name="arch" type="xml">
+            <tree>
+                         <field name="code" invisible=""/>
+                        <field name="intitule"/>
+                        <field name="departement_id"/>
+                        <field name="groupe_id"/>
+
+
+            </tree>
+
+        </field>
+    </record>
+
+
+    <record id="university_filiere_search" model="ir.ui.view">
+            <field name="name">university.filiere.search</field>
+            <field name="model">university.filiere</field>
+            <field name="arch" type="xml">
+                <search string="search_panel">
+                    <field name="intitule"/>
+                    <separator/>
+            <filter string="intitule" domain="[('intitule', '!=', '')]" name="intitule"/>
+            <filter string="departement_id" domain="[('departement_id', '!=', False)]" name="departement_id"/>
+
+             <group expand="0" string="Group By">
+              <filter string="intitule" name="intitule" context="{'group_by': 'intitule'}"/>
+              <filter string="departement_id" name="departement_id" context="{'group_by': 'departement_id'}"/>
+             </group>
+                     <separator/>
+                    <searchpanel>
+                        <field name="departement_id" icon="fa-user-o" />
+                    </searchpanel>
+
+                </search>
+            </field>
+        </record>
+
+
+
+
+
+        <record model="ir.actions.act_window" id="action_university_filiere">
+            <field name="name">list of filiere</field>
+            <field name="res_model">university.filiere</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>
+

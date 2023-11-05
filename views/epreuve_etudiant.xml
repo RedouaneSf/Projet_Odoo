@@ -1,0 +1,38 @@
+<odoo>
+
+    <record id="university_epretud_form" model="ir.ui.view">
+        <field name="name">university.epretud.form</field>
+        <field name="model">university.epretud</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="Note"/>
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="university_epretud_tree" model="ir.ui.view">
+        <field name="name">university.epretud.tree</field>
+        <field name="model">university.epretud</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="Note"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+        <record model="ir.actions.act_window" id="action_university_epretud">
+            <field name="name">list of epretud</field>
+            <field name="res_model">university.epretud</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>
+

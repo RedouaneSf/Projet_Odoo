@@ -1,0 +1,218 @@
+<odoo>
+
+    <record id="university_enseignant_form" model="ir.ui.view">
+        <field name="name">university.enseignant.form</field>
+        <field name="model">university.enseignant</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                    <div>
+                        <h1 style="margin-left:100px;">
+                            <field name="nom" required="1" invisible="1"/>
+                            <table>
+                                <tr>
+                                    <td style="padding-right:10px;">
+                                        <field name="nom" placeholder="Nom" required="1"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="prenom" required="1" placeholder="Prénom"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </h1>
+                    </div>
+                   </group>
+                    <group> <field name="code" readonly="1"/></group>
+                    <group><field name="image" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image&quot;}"/></group>
+
+
+
+                    <notebook>
+                          <page string="information personnel">
+
+                    <group>
+
+                        <group><field name="datenaissance"/></group>
+                        <group>  <field name="sexe"/></group>
+                         <group> <field name="ville"/></group>
+                        <group><field name="nationalite"/></group>
+                    </group>
+                     </page>
+
+                         <page  string="information professionel">
+                        <group><field name="codepostal"/></group>
+                        <group><field name="adresse"/></group>
+                        <group>  <field name="cin"/></group>
+
+
+
+                               <group> <field name="email"/></group>
+
+                               <group><field name="tel"/></group>
+
+
+
+                       <group>
+                          <group><field name="datedebut"/></group>
+                    </group>
+
+                    </page>
+                        <page string="information scolaire">
+                            <group>
+                            <group><field name="universite_id"/> </group>
+                                <group><field name="mat_id" widget="many2many_tags"/></group>
+                          <group><field name="departement_id"/></group>
+                                <group><field name="group_id" widget="many2many_tags"/></group>
+
+                          </group>
+
+                        </page>
+
+
+                        <page>
+
+                        </page>
+                    </notebook>
+
+
+
+
+                </sheet>
+                  <div class="oe_chatter">
+                         <field name="message_follower_ids" widget="mail_followers"/>
+                          <field name="message_ids" widget="mail_thread"/>
+                     </div>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="university_enseignant_tree" model="ir.ui.view">
+        <field name="name">university.enseignant.tree</field>
+        <field name="model">university.enseignant</field>
+        <field name="arch" type="xml">
+            <tree>
+                        <field name="code" readonly=""/>
+                        <field name="nom"/>
+                        <field name="prenom"/>
+                        <field name="cin"/>
+                        <field name="adresse"/>
+                        <field name="codepostal" optional="hide"/>
+                        <field name="datenaissance"/>
+                        <field name="datedebut"/>
+                        <field name="email"/>
+                        <field name="tel"/>
+                        <field name="sexe"/>
+                        <field name="nationalite" optional="hide"/>
+                        <field name="ville" optional="hide"/>
+                        <field name="mat_id"/>
+                        <field name="departement_id" optional="hide"/>
+                        <field name="universite_id" optional="hide"/>
+                        <field name="group_id" optional="hide"/>
+            </tree>
+
+        </field>
+
+
+    </record>
+
+    <record id="university_enseignant_kanban_view" model="ir.ui.view">
+        <field name="name">university.enseignant.view</field>
+        <field name="model">university.enseignant</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="nom"/>
+                <field name="id"/>
+                <field name="image"/>
+
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="o_kanban_image">
+                                            <img class="oe_kanban_image"
+                                        t-att-src="kanban_image('university.enseignant', 'image', record.id.value)" />
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <strong><field name="departement_id"/></strong>
+
+                                        <div/>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <strong><field name="nom"/></strong>
+                                        <strong><field name="prenom"/></strong>
+                                        <div/>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+
+
+
+
+
+
+
+    <record id="university_enseignant_search" model="ir.ui.view">
+            <field name="name">university.enseignant.search</field>
+            <field name="model">university.enseignant</field>
+            <field name="arch" type="xml">
+                <search string="search_panel">
+                    <field name="matiere_id"/>
+                    <separator/>
+            <filter string="matiere_id" domain="[('matiere_id', '!=', '')]" name="matiere_id"/>
+            <filter string="departement_id" domain="[('departement_id', '!=', False)]" name="departement_id"/>
+
+             <group expand="0" string="Group By">
+              <filter string="matiere_id" name="matiere_id" context="{'group_by': 'matiere_id'}"/>
+              <filter string="departement_id" name="departement_id" context="{'group_by': 'departement_id'}"/>
+             </group>
+                     <separator/>
+                    <searchpanel>
+                        <field name="departement_id" icon="fa-user-o"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+
+
+
+    <record id="university_enseignant_id" model="ir.ui.view">
+        <field name="name">university.enseignant.graph</field>
+        <field name="model">university.enseignant</field>
+        <field name="arch" type="xml">
+            <graph string="university.enseignant" type="bar">
+
+
+                <field name="sexe"/>
+                <field name="departement_id"/>
+                <field name="matiere_id"/>
+
+            </graph>
+
+        </field>
+    </record>
+
+        <record model="ir.actions.act_window" id="action_university_enseignant">
+            <field name="name">list of enseignant</field>
+            <field name="res_model">university.enseignant</field>
+            <field name="view_mode">kanban,tree,form,graph</field>
+        </record>
+
+</odoo>
+

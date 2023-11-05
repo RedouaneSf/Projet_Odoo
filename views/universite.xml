@@ -1,0 +1,44 @@
+<odoo>
+
+    <record id="university_universite_form" model="ir.ui.view">
+        <field name="name">university.universite.form</field>
+        <field name="model">university.universite</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="nom"/>
+                        <field name="adresse"/>
+                        <field name="ville"/>
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="university_universite_tree" model="ir.ui.view">
+        <field name="name">university.universite.tree</field>
+        <field name="model">university.universite</field>
+        <field name="arch" type="xml">
+            <tree>
+                        <field name="code" readonly="1"/>
+                        <field name="nom"/>
+                        <field name="adresse"/>
+                        <field name="ville"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+        <record model="ir.actions.act_window" id="action_university_universite">
+            <field name="name">list of universite</field>
+            <field name="res_model">university.universite</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>
+

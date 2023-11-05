@@ -1,0 +1,98 @@
+<odoo>
+
+    <record id="university_module_form" model="ir.ui.view">
+        <field name="name">university.module.form</field>
+        <field name="model">university.module</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="id" readonly="1" invisible="1"/>
+                        <field name="intitule"/>
+                        <field name="volume_hor"/>
+                        <field name="note_min"/>
+                        <field name="filiere_id"/>
+                        <field name="matiere_ids" widget="many2many_tags"/>
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="university_module_tree" model="ir.ui.view">
+        <field name="name">university.module.tree</field>
+        <field name="model">university.module</field>
+        <field name="arch" type="xml">
+            <tree>
+                        <field name="id" invisible="1"/>
+                        <field name="intitule"/>
+                        <field name="volume_hor"/>
+                        <field name="note_min"/>
+                        <field name="filiere_id"/>
+                        <field name="matiere_ids"/>
+
+
+            </tree>
+
+        </field>
+    </record>
+
+
+
+
+
+
+
+
+
+
+     <record id="university_module_search" model="ir.ui.view">
+            <field name="name">university.module.search</field>
+            <field name="model">university.module</field>
+            <field name="arch" type="xml">
+                <search string="search_panel">
+                    <field name="filiere_id"/>
+                    <separator/>
+            <filter string="intitule" domain="[('intitule', '!=', '')]" name="intitule"/>
+            <filter string="volume_hor" domain="[('volume_hor', '!=', False)]" name="volume_hor"/>
+
+             <group expand="0" string="Group By">
+              <filter string="intitule" name="intitule" context="{'group_by': 'intitule'}"/>
+              <filter string="volume_hor" name="volume_hor" context="{'group_by': 'volume_hor'}"/>
+             </group>
+                     <separator/>
+                    <searchpanel>
+                        <field name="filiere_id" icon="fa-user-o" />
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <record model="ir.actions.act_window" id="action_university_module">
+            <field name="name">list of module</field>
+            <field name="res_model">university.module</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>
+

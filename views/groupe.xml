@@ -1,0 +1,131 @@
+<odoo>
+
+    <record id="university_groupe_form" model="ir.ui.view">
+        <field name="name">university.groupe.form</field>
+        <field name="model">university.groupe</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                     <div class="oe_button_box" name="button_box">
+
+                       <button class="oe_stat_button" name="action_view"
+
+                        type="object" icon="fa-user" string="Students:">
+
+                       <field name="num_stu"/>
+
+                        </button>
+
+
+                    </div>
+                    <group>
+
+                        <field name="nom"/>
+                        <field name="filiere_id"/>
+                        <field name="annee_id"/>
+                        <field name="num_stu"/>
+                    </group>
+
+                    <notebook>
+                          <page string="Enseignant">
+                         <field name="ens_id">
+                             <tree editable="bottom">
+                                 <field name="nom"/>
+                                 <field name="matiere_id"/>
+
+                             </tree>
+                             <form>
+                                 <sheet>
+                                     <group>
+                                         <field name="nom"/>
+                                         <field name="matiere_id"/>
+
+                                     </group>
+                                 </sheet>
+
+                             </form>
+                         </field>
+                      </page>
+                      </notebook>
+                    <group>
+                        <div class="oe_chatter">
+                         <field name="message_follower_ids" widget="mail_followers"/>
+                          <field name="message_ids" widget="mail_thread"/>
+                   </div>
+                    </group>
+                </sheet>
+
+
+            </form>
+
+
+        </field>
+    </record>
+
+    <record id="university_groupe_tree" model="ir.ui.view">
+        <field name="name">university.groupe.tree</field>
+        <field name="model">university.groupe</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="nom"/>
+                <field name="filiere_id"/>
+                <field name="annee_id"/>
+
+
+            </tree>
+
+        </field>
+    </record>
+
+
+
+
+    <record id="university_groupe_search" model="ir.ui.view">
+            <field name="name">university.groupe.search</field>
+            <field name="model">university.groupe</field>
+           <field name="arch" type="xml">
+                <search string="search_panel">
+                    <field name="filiere_id"/>
+                    <separator/>
+            <filter string="filiere_id" domain="[('filiere_id', '!=', '')]" name="filiere_id"/>
+
+
+             <group expand="0" string="Group By">
+              <filter string="filiere_id" name="filiere_id" context="{'group_by': 'filiere_id'}"/>
+                 <filter string="annee_id" name="annee_id" context="{'group_by': 'annee_id'}"/>
+
+             </group>
+                     <separator/>
+                    <searchpanel>
+                        <field name="filiere_id" icon="fa-user-o"/>
+                        <field name="annee_id" icon="fa-user-o"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+    <record id="university_groupe_id" model="ir.ui.view">
+        <field name="name">university.groupe.graph</field>
+        <field name="model">university.groupe</field>
+        <field name="arch" type="xml">
+            <graph string="university_groupe" type="bar">
+
+                <field name="filiere_id"/>
+
+            </graph>
+
+        </field>
+    </record>
+
+
+        <record model="ir.actions.act_window" id="action_university_groupe">
+            <field name="name">list of groupe</field>
+            <field name="res_model">university.groupe</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+</odoo>
+
+
+

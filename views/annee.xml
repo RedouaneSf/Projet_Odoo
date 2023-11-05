@@ -1,0 +1,40 @@
+<odoo>
+
+    <record id="university_absence_form" model="ir.ui.view">
+        <field name="name">university.annee.form</field>
+        <field name="model">university.annee</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+
+                        <field name="date"/>
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="university_absence_tree" model="ir.ui.view">
+        <field name="name">university.annee.tree</field>
+        <field name="model">university.annee</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                        <field name="date"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+        <record model="ir.actions.act_window" id="action_university_annee">
+            <field name="name">list of annee</field>
+            <field name="res_model">university.annee</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>
+

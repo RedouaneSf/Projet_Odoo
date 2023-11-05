@@ -1,0 +1,47 @@
+<odoo>
+
+    <record id="university_absence_form" model="ir.ui.view">
+        <field name="name">university.absence.form</field>
+        <field name="model">university.absence</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="justifier"/>
+                        <field name="non_justifier"/>
+                        <field name="seance_id"/>
+                        <field name="etudiant_id"/>
+                        <field name="seance_id"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="university_absence_tree" model="ir.ui.view">
+        <field name="name">university.absence.tree</field>
+        <field name="model">university.absence</field>
+        <field name="arch" type="xml">
+            <tree>
+                         <field name="justifier"/>
+                        <field name="non_justifier"/>
+                        <field name="seance_id"/>
+                        <field name="etudiant_id"/>
+                         <field name="seance_id"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+        <record model="ir.actions.act_window" id="action_university_absence">
+            <field name="name">list of absence</field>
+            <field name="res_model">university.absence</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>
+

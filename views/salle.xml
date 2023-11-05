@@ -1,0 +1,41 @@
+<odoo>
+
+    <record id="university_salle_form" model="ir.ui.view">
+        <field name="name">university.salle.form</field>
+        <field name="model">university.salle</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+
+                        <field name="lib"/>
+                        <field name="capacite"/>
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="university_salle_tree" model="ir.ui.view">
+        <field name="name">university.salle.tree</field>
+        <field name="model">university.salle</field>
+        <field name="arch" type="xml">
+            <tree>
+                        <field name="lib"/>
+                        <field name="capacite"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+        <record model="ir.actions.act_window" id="action_university_salle">
+            <field name="name">list of salle</field>
+            <field name="res_model">university.salle</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>
+

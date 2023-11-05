@@ -1,0 +1,97 @@
+<odoo>
+
+    <record id="university_seance_form" model="ir.ui.view">
+        <field name="name">university.seance.form</field>
+        <field name="model">university.seance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+
+
+                        <field name="heure_debut"/>
+                        <field name="heure_fin"/>
+                        <field name="date"/>
+                        <field name="matiere_id"/>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="university_seance_tree" model="ir.ui.view">
+        <field name="name">university.seance.tree</field>
+        <field name="model">university.seance</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                        <field name="heure_debut"/>
+                        <field name="heure_fin"/>
+                        <field name="date"/>
+                        <field name="matiere_id"/>
+
+
+            </tree>
+
+        </field>
+    </record>
+
+
+      <record id="university_seance_search" model="ir.ui.view">
+            <field name="name">university.seance.search</field>
+            <field name="model">university.seance</field>
+            <field name="arch" type="xml">
+                <search string="search_panel">
+                    <field name="date"/>
+                    <separator/>
+            <filter string="date" domain="[('date', '!=', '')]" name="date"/>
+            <filter string="heure_debut" domain="[('heure_debut', '!=', False)]" name="heure_debut"/>
+
+             <group expand="0" string="Group By">
+              <filter string="date" name="date" context="{'group_by': 'date'}"/>
+              <filter string="heure_debut" name="heure_debut" context="{'group_by': 'heure_debut'}"/>
+             </group>
+                     <separator/>
+                    <searchpanel>
+                        <field name="matiere_id" icon="fa-user-o" />
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <record model="ir.actions.act_window" id="action_university_seance">
+            <field name="name">list of module seance</field>
+            <field name="res_model">university.seance</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>
+

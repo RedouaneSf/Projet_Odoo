@@ -1,0 +1,296 @@
+<odoo>
+
+    <record id="university_etudiant_form" model="ir.ui.view">
+        <field name="name">university.etudiant.form</field>
+        <field name="model">university.etudiant</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                    <div>
+                        <h1 style="margin-left:100px;">
+                            <field name="nom" required="1" invisible="1"/>
+                            <table>
+                                <tr>
+                                    <td style="padding-right:10px;">
+                                        <field name="nom" placeholder="Nom" required="1"/>
+                                    </td>
+                                    <td style="padding-right:10px;">
+                                        <field name="prenom" required="1" placeholder="Prénom"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </h1>
+                    </div>
+                   </group>
+                     <group>
+                         <group> <field name="id" readonly="1" invisible="1"/></group>
+                     </group>
+                     <group>
+
+                                 <group><field name="image" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image&quot;}"/></group>
+
+                     </group>
+                     <notebook>
+
+                     <page string="information personnel">
+
+                    <group>
+
+                        <group><field name="datenaissance"/></group>
+                        <group>  <field name="sexe"/></group>
+                         <group> <field name="ville"/></group>
+                        <group><field name="nationalite"/></group>
+                    </group>
+                     </page>
+
+
+
+                           <page  string="information professionel">
+                        <group><field name="codepostal"/></group>
+                        <group><field name="adresse"/></group>
+                        <group>  <field name="cin"/></group>
+
+                          <group> <field name="cne"/></group>
+
+                               <group> <field name="email"/></group>
+
+                               <group><field name="tel"/></group>
+
+
+
+                       <group>
+                          <group><field name="dateinscription"/></group>
+                    </group>
+
+                    </page>
+
+
+                        <page string="information scolaire">
+
+                    <group>
+                           <group><field name="matricule" readonly="1"/></group>
+                           <group><field name="fil_id"/></group>
+                           <group><field name="dep_id"/></group>
+                          <group><field name="groupe_id"/></group>
+
+                       </group>
+
+                    </page>
+                   </notebook>
+
+
+
+
+                    <notebook>
+                        <page string="Absence">
+                         <field name="absence2_ids">
+                             <tree editable="bottom">
+                                 <field name="seance_id"/>
+                                 <field name="matiere_id"/>
+                                  <field name="justifier"/>
+                                 <field name="non_justifier"/>
+                             </tree>
+                             <form>
+                                 <sheet>
+                                     <group>
+                                         <field name="seance_id"/>
+                                         <field name="matiere_id"/>
+                                         <field name="justifier"/>
+                                         <field name="non_justifier"/>
+                                     </group>
+                                 </sheet>
+
+                             </form>
+                         </field>
+                      </page>
+
+
+
+
+
+
+                     <page string="Resultat">
+
+
+                                <field name="note_gen" readonly="1"/>
+                                <field name="ratt_gen" readonly="1"/>
+                                <button name="calcule_note" string="calcule_note" type="object"/>
+                                <button name="check_ratt" string="check" type="object"/>
+
+
+
+
+                      </page>
+
+
+
+
+
+
+
+
+
+                     <page string="Note">
+                         <field name="epreuve_etud_ids">
+                             <tree editable="bottom">
+                           <field name="epreuve_id"/>
+                           <field name="matiere_id"/>
+                            <field name="note"/>
+
+                             </tree>
+                             <form>
+                                 <sheet>
+                                     <group>
+                                         <field name="epreuve_id"/>
+                                         <field name="matiere_id"/>
+                                          <field name="note"/>
+
+
+                                     </group>
+                                 </sheet>
+
+                             </form>
+                         </field>
+                      </page>
+
+                 </notebook>
+
+
+                </sheet>
+
+                <div class="oe_chatter">
+                         <field name="message_follower_ids" widget="mail_followers"/>
+                          <field name="message_ids" widget="mail_thread"/>
+                   </div>
+
+            </form>
+
+
+        </field>
+    </record>
+
+    <record id="university_etudiant_tree" model="ir.ui.view">
+        <field name="name">university.etudiant.tree</field>
+        <field name="model">university.etudiant</field>
+        <field name="arch" type="xml">
+            <tree>
+                     <field name="id" invisible="1"/>
+
+
+                       <field name="matricule" readonly="1"/>
+                        <field name="nom"/>
+                        <field name="prenom"/>
+                        <field name="cin"/>
+                        <field name="cne" optional="hide"/>
+                        <field name="adresse" optional="hide"/>
+                        <field name="codepostal" optional="hide"/>
+                        <field name="datenaissance"/>
+                        <field name="dateinscription" optional="hide"/>
+                        <field name="email" optional="hide"/>
+                        <field name="tel"/>
+                        <field name="sexe"/>
+                        <field name="nationalite" optional="hide"/>
+                        <field name="ville" optional="hide"/>
+                        <field name="groupe_id"/>
+                        <field name="absence_ids" optional="hide"/>
+                      <!-- <field name="image" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image_128&quot;}" optional="hide"/>-->
+            </tree>
+
+        </field>
+    </record>
+
+
+    <record id="university_etudiant_search" model="ir.ui.view">
+            <field name="name">university.etudiant.search</field>
+            <field name="model">university.etudiant</field>
+            <field name="arch" type="xml">
+                <search string="search_panel">
+                    <field name="prenom"/>
+                    <separator/>
+            <filter string="sexe" domain="[('sexe', '!=', '')]" name="sexe"/>
+            <filter string="datenaissance" domain="[('datenaissance', '!=', False)]" name="datenaissance"/>
+
+             <group expand="0" string="Group By">
+              <filter string="prenom" name="prenom" context="{'group_by': 'prenom'}"/>
+              <filter string="datenaissance" name="datenaissance" context="{'group_by': 'datenaissance'}"/>
+             </group>
+                     <separator/>
+                    <searchpanel>
+                        <field name="groupe_id" icon="fa-user-o" />
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+
+
+
+        <record id="university_etudiant_kanban_view" model="ir.ui.view">
+        <field name="name">university.etudiant.view</field>
+        <field name="model">university.etudiant</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="nom"/>
+                <field name="id" invisible="1"/>
+                <field name="image"/>
+                <field name="matricule"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="o_kanban_image">
+                                            <img class="oe_kanban_image"
+                                        t-att-src="kanban_image('university.etudiant', 'image', record.id.value)" />
+
+                                        </div>
+                                    </div>
+                                     <div class="col-md-3">
+                                        <strong><field name="groupe_id"/></strong>
+
+                                        <div/>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <strong><field name="nom"/></strong>
+                                        <strong><field name="prenom"/></strong>
+                                        <div/>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+       <record id="university_etudiant_id" model="ir.ui.view">
+        <field name="name">university.etudiant.graph</field>
+        <field name="model">university.etudiant</field>
+        <field name="arch" type="xml">
+            <graph string="university.etudiant" type="bar">
+
+                <field name="groupe_id"/>
+                <field name="sexe"/>
+
+            </graph>
+
+        </field>
+    </record>
+
+
+
+
+    <record model="ir.actions.act_window" id="action_university_etudiant">
+            <field name="name">list of etudiant</field>
+            <field name="res_model">university.etudiant</field>
+            <field name="view_mode">kanban,tree,form,graph</field>
+        </record>
+
+</odoo>
+

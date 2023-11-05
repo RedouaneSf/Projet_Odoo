@@ -1,0 +1,64 @@
+<odoo>
+
+    <record id="university_departement_form" model="ir.ui.view">
+        <field name="name">university.departement.form</field>
+        <field name="model">university.departement</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group>
+                        <field name="nom"/>
+                        <field name="universite_id"/>
+                         <field name="num_ens"/>
+                    </group>
+                    <notebook>
+                      <page string="note">
+                         <field name="enseignant_id">
+                             <tree editable="bottom">
+                           <field name="nom"/>
+                           <field name="prenom"/>
+
+                             </tree>
+                             <form>
+                                 <sheet>
+                                     <group>
+                                         <field name="nom"/>
+                                         <field name="prenom"/>
+                                     </group>
+                                 </sheet>
+
+                             </form>
+                         </field>
+                      </page>
+
+                </notebook>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="university_departement_tree" model="ir.ui.view">
+        <field name="name">university.departement.tree</field>
+        <field name="model">university.departement</field>
+        <field name="arch" type="xml">
+            <tree>
+                        <field name="nom"/>
+                        <field name="universite_id"/>
+                         <field name="num_ens"/>
+
+
+            </tree>
+
+        </field>
+    </record>
+
+        <record model="ir.actions.act_window" id="action_university_departement">
+            <field name="name">list of departement</field>
+            <field name="res_model">university.departement</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>
+

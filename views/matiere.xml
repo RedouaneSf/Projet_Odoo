@@ -1,0 +1,91 @@
+<odoo>
+
+    <record id="university_matiere_form" model="ir.ui.view">
+        <field name="name">university.matiere.form</field>
+        <field name="model">university.matiere</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="lib"/>
+                        <field name="coefficient"/>
+                        <field name="sale_id"/>
+                        <field name="modules_ids" widget="many2many_tags"/>
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="university_matiere_tree" model="ir.ui.view">
+        <field name="name">university.matiere.tree</field>
+        <field name="model">university.matiere</field>
+        <field name="arch" type="xml">
+            <tree>
+                        <field name="lib"/>
+                        <field name="coefficient" sum="coefficient"/>
+                         <field name="sale_id"/>
+                          <field name="modules_ids"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+
+       <record id="university_matiere_search" model="ir.ui.view">
+            <field name="name">university.matiere.search</field>
+            <field name="model">university.matiere</field>
+            <field name="arch" type="xml">
+                <search string="search_panel">
+                    <field name="lib"/>
+                    <separator/>
+            <filter string="lib" domain="[('lib', '!=', '')]" name="lib"/>
+            <!--<filter string="coefficient" domain="[('coefficient', '!=', False)]" name="coefficient"/>-->
+
+             <group expand="0" string="Group By">
+              <filter string="lib" name="lib" context="{'group_by': 'lib'}"/>
+              <!--<filter string="coefficient" name="coefficient" context="{'group_by': 'coefficient'}"/>-->
+             </group>
+                     <separator/>
+                    <searchpanel>
+                        <!--<field name="module_id" icon="fa-user-o" />-->
+                         <field name="sale_id" icon="fa-user-o" />
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <record model="ir.actions.act_window" id="action_university_matiere">
+            <field name="name">list of matiere</field>
+            <field name="res_model">university.matiere</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>
+
